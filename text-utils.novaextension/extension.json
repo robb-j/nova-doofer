@@ -1,0 +1,72 @@
+{
+  "identifier": "robb-j.text-utils",
+  "name": "Text Utilites",
+  "organization": "Rob Anderson",
+  "description": "Lorem ipsum, dolor sit amet.",
+  "version": "1.0",
+  "categories": ["commands"],
+  "license": "MIT",
+  "repository": "https://github.com/robb-j/nova-text-utils",
+  "bugs": "https://github.com/robb-j/nova-text-utils/issues",
+
+  "main": "main.dist.js",
+
+  "activationEvents": [],
+
+  "entitlements": {},
+
+  "commands": {
+    "extensions": [
+      {
+        "title": "Base64 Decode",
+        "command": "text-utils.base64Decode"
+      },
+      {
+        "title": "Base64 Encode",
+        "command": "text-utils.base64Encode"
+      },
+      {
+        "title": "JWT Decode",
+        "command": "text-utils.jwtDecode"
+      },
+      {
+        "title": "Lorem Ipsum",
+        "command": "text-utils.loremIpsum"
+      },
+      {
+        "title": "Sort Lines",
+        "command": "text-utils.sortLines"
+      }
+    ]
+  },
+
+  "configWorkspace": [
+    {
+      "title": "Lorem ipsum generator",
+      "description": "Configure how text is randomly generated.",
+      "type": "section",
+      "children": [
+        {
+          "key": "text-utils.sentence-min",
+          "title": "The minimum number of words in a sentence",
+          "type": "number"
+        },
+        {
+          "key": "text-utils.sentence-max",
+          "title": "The maximum number of words in a sentence",
+          "type": "number"
+        },
+        {
+          "key": "text-utils.paragraph-min",
+          "title": "The minimum number of sentences in a paragraph",
+          "type": "number"
+        },
+        {
+          "key": "text-utils.paragraph-max",
+          "title": "The maximum number of sentences in a paragraph",
+          "type": "number"
+        }
+      ]
+    }
+  ]
+}
