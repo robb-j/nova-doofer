@@ -16,26 +16,26 @@
   "entitlements": {},
 
   "commands": {
-    "extensions": [
+    "editor": [
       {
         "title": "Base64 Decode",
-        "command": "text-utils.base64Decode"
+        "command": "robb-j.text-utils.base64Decode"
       },
       {
         "title": "Base64 Encode",
-        "command": "text-utils.base64Encode"
+        "command": "robb-j.text-utils.base64Encode"
       },
       {
         "title": "JWT Decode",
-        "command": "text-utils.jwtDecode"
+        "command": "robb-j.text-utils.jwtDecode"
       },
       {
         "title": "Lorem Ipsum",
-        "command": "text-utils.loremIpsum"
+        "command": "robb-j.text-utils.loremIpsum"
       },
       {
         "title": "Sort Lines",
-        "command": "text-utils.sortLines"
+        "command": "robb-j.text-utils.sortLines"
       }
     ]
   },
@@ -43,26 +43,27 @@
   "configWorkspace": [
     {
       "title": "Lorem ipsum generator",
+      "key": "",
       "description": "Configure how text is randomly generated.",
       "type": "section",
       "children": [
         {
-          "key": "text-utils.sentence-min",
+          "key": "robb-j.text-utils.sentence-min",
           "title": "The minimum number of words in a sentence",
           "type": "number"
         },
         {
-          "key": "text-utils.sentence-max",
+          "key": "robb-j.text-utils.sentence-max",
           "title": "The maximum number of words in a sentence",
           "type": "number"
         },
         {
-          "key": "text-utils.paragraph-min",
+          "key": "robb-j.text-utils.paragraph-min",
           "title": "The minimum number of sentences in a paragraph",
           "type": "number"
         },
         {
-          "key": "text-utils.paragraph-max",
+          "key": "robb-j.text-utils.paragraph-max",
           "title": "The maximum number of sentences in a paragraph",
           "type": "number"
         }

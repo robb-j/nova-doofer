@@ -36,14 +36,14 @@ function getConfig(workspace: Workspace) {
   return {
     // How many words to put into sentences
     sentence: {
-      min: getOr("text-utils.sentence-min", SENTENCE_MIN),
-      max: getOr("text-utils.sentence-max", SENTENCE_MAX),
+      min: getOr("robb-j.text-utils.sentence-min", SENTENCE_MIN),
+      max: getOr("robb-j.text-utils.sentence-max", SENTENCE_MAX),
     },
 
     // How many sentences to put into paragraphs
     paragraph: {
-      min: getOr("text-utils.paragraph-min", PARAGRAPH_MIN),
-      max: getOr("text-utils.paragraph-max", PARAGRAPH_MAX),
+      min: getOr("robb-j.text-utils.paragraph-min", PARAGRAPH_MIN),
+      max: getOr("robb-j.text-utils.paragraph-max", PARAGRAPH_MAX),
     },
   };
 }
@@ -67,7 +67,7 @@ function randomSentence(length: number) {
 
 function randomParagraph(numWords: number, config: LoremConfig) {
   const words = createArray(numWords, () => {
-    const numWords = randomNumber(config.sentence.min, config.sentence.min);
+    const numWords = randomNumber(config.sentence.min, config.sentence.max);
     return randomSentence(numWords);
   });
 
@@ -99,7 +99,10 @@ function createArray<T = unknown>(length: number, fill: () => T): T[] {
 // The exported command
 //
 
-export async function loremIpsumCommand(workspace: Workspace) {
+export async function loremIpsumCommand(
+  editor: TextEditor,
+  workspace: Workspace
+) {
   const type = await pick(workspace, [PARAGHRAPHS, WORDS]);
   const amount = await pick(workspace, ["1", "2", "3", "4", "5"]);
 

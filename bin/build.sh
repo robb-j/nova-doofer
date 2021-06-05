@@ -2,8 +2,10 @@
 
 set -e
 
-# npx tsc --noEmit --pretty
+# Lint TypeScript
+npx tsc --noEmit --pretty
 
+# Bundle into JavaScript
 npx esbuild \
   --bundle \
   --format=cjs \

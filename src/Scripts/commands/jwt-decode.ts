@@ -7,8 +7,8 @@ import { createDebug } from "../debug";
 
 const debug = createDebug("jwt-decode");
 
-export function jwtDecodeCommand(workspace: Workspace) {
-  const { selectedText, selectedRange } = workspace.activeTextEditor;
+export function jwtDecodeCommand(editor: TextEditor) {
+  const { selectedText, selectedRange } = editor;
   if (!selectedText) {
     nova.notifications.add(new NothingSelectedNotification());
     return;
@@ -24,7 +24,7 @@ export function jwtDecodeCommand(workspace: Workspace) {
 
     const output = JSON.stringify({ header, payload, signature }, null, 2);
 
-    workspace.activeTextEditor.edit((edit) => {
+    editor.edit((edit) => {
       edit.replace(selectedRange, output);
     });
   } catch (error) {

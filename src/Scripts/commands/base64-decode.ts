@@ -6,9 +6,9 @@ import { createDebug } from "../debug";
 
 const debug = createDebug("base64-decode");
 
-export function base64DecodeCommand(workspace: Workspace) {
+export function base64DecodeCommand(editor: TextEditor) {
   try {
-    const { selectedText, selectedRange } = workspace.activeTextEditor;
+    const { selectedText, selectedRange } = editor;
 
     if (!selectedText) {
       nova.notifications.add(new NothingSelectedNotification());
@@ -18,7 +18,7 @@ export function base64DecodeCommand(workspace: Workspace) {
     const output = atob(selectedText);
     debug(`input='${selectedText}' output=${output}`);
 
-    workspace.activeTextEditor.edit((edit) => {
+    editor.edit((edit) => {
       edit.replace(selectedRange, output);
     });
   } catch (error) {

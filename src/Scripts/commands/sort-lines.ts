@@ -3,8 +3,8 @@ import { NothingSelectedNotification } from "../notifications";
 
 const debug = createDebug("sort-lines");
 
-export function sortLinesCommand(workspace: Workspace) {
-  const { selectedText, selectedRange } = workspace.activeTextEditor;
+export function sortLinesCommand(editor: TextEditor) {
+  const { selectedText, selectedRange } = editor;
 
   if (!selectedText) {
     nova.notifications.add(new NothingSelectedNotification());
@@ -15,7 +15,7 @@ export function sortLinesCommand(workspace: Workspace) {
 
   debug(`input='${selectedText}' output=${output}`);
 
-  workspace.activeTextEditor.edit((edit) => {
+  editor.edit((edit) => {
     edit.replace(selectedRange, output);
   });
 }
