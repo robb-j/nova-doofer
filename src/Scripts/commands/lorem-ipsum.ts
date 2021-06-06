@@ -1,4 +1,5 @@
 import { createDebug } from "../debug";
+import { askChoice } from "../utils";
 
 const debug = createDebug("lorem-ipsum");
 
@@ -18,12 +19,6 @@ const LOREM_WORDS: string[] = JSON.parse(
 //
 // Nova helpers
 //
-
-function pick(workspace: Workspace, choices: string[]) {
-  return new Promise<string | null>((resolve) => {
-    workspace.showChoicePalette(choices, {}, (choice) => resolve(choice));
-  });
-}
 
 type LoremConfig = ReturnType<typeof getConfig>;
 
@@ -103,8 +98,8 @@ export async function loremIpsumCommand(
   editor: TextEditor,
   workspace: Workspace
 ) {
-  const type = await pick(workspace, [PARAGHRAPHS, WORDS]);
-  const amount = await pick(workspace, ["1", "2", "3", "4", "5"]);
+  const type = await askChoice(workspace, [PARAGHRAPHS, WORDS]);
+  const amount = await askChoice(workspace, ["1", "2", "3", "4", "5"]);
 
   const config = getConfig(workspace);
 

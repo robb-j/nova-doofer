@@ -14,14 +14,12 @@ My name is methos
 
 TXkgbmFtZSBpcyBtZXRob3M=
 
-- A
-- B
 - C
-- D
+- B
 - E
+- A
+- D
 
 ## future work / ideas
 
-- convert cases with [casex](npm.im/casex)
-- sluggify a string
 - release extension?

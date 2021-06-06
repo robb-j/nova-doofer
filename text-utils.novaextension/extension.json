@@ -40,6 +40,11 @@
         "title": "Sort Lines",
         "command": "robb-j.text-utils.sortLines",
         "when": "editorHasSelection"
+      },
+      {
+        "title": "Convert Case...",
+        "command": "robb-j.text-utils.convertCase",
+        "when": "editorHasSelection"
       }
     ]
   },
