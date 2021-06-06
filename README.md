@@ -25,5 +25,3 @@ TXkgbmFtZSBpcyBtZXRob3M=
 - convert cases with [casex](npm.im/casex)
 - sluggify a string
 - release extension?
-- the commands should be "editor" commands
-  - which has a different method signature

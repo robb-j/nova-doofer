@@ -19,15 +19,18 @@
     "editor": [
       {
         "title": "Base64 Decode",
-        "command": "robb-j.text-utils.base64Decode"
+        "command": "robb-j.text-utils.base64Decode",
+        "when": "editorHasSelection"
       },
       {
         "title": "Base64 Encode",
-        "command": "robb-j.text-utils.base64Encode"
+        "command": "robb-j.text-utils.base64Encode",
+        "when": "editorHasSelection"
       },
       {
         "title": "JWT Decode",
-        "command": "robb-j.text-utils.jwtDecode"
+        "command": "robb-j.text-utils.jwtDecode",
+        "when": "editorHasSelection"
       },
       {
         "title": "Lorem Ipsum",
@@ -35,7 +38,8 @@
       },
       {
         "title": "Sort Lines",
-        "command": "robb-j.text-utils.sortLines"
+        "command": "robb-j.text-utils.sortLines",
+        "when": "editorHasSelection"
       }
     ]
   },
