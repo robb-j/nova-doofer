@@ -12,7 +12,7 @@ const cases = [
   { pattern: "ca_se", title: "snake_case" },
   { pattern: "ca-se", title: "kebab-case" },
   { pattern: "caSe", title: "camelCase" },
-  { pattern: "Ca se", title: "Sentence Case" },
+  { pattern: "Ca se", title: "Sentence case" },
   { pattern: "CaSe", title: "PascalCase" },
   { pattern: "Ca Se", title: "Title Case" },
 ];

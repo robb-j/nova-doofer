@@ -1,6 +1,6 @@
 /**
- * As the user in a workspace to choose an option
- * and wrap their response in a Promise
+ * Ask the workspace user to choose an option
+ * and return a Promise for their response.
  */
 export function askChoice(workspace: Workspace, choices: string[]) {
   return new Promise<string | null>((resolve) => {

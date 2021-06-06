@@ -1,25 +1,74 @@
-# text-utils
+# Doofer
 
-## playground
+Extra text utilities for [Nova](https://nova.app).
 
-Semper fames scelerisque feugiat scelerisque erat sagittis libero viverra augue libero risus. Non neque porttitor eros praesent consectetur mattis pretium ut dolor dapibus. Vitae platea lectus porttitor metus orci magna fermentum sagittis eu eiusmod. Ligula euismod feugiat iaculis mauris placerat adipiscing faucibus semper aenean pretium vitae ipsum. Viverra duis curabitur consectetur ante do mauris praesent scelerisque quam nec ultricies tristique. Nec sit convallis ut etiam vehicula purus ipsum ornare bibendum accumsan posuere elementum mauris.
+> A Doofer can be anything. When you can't think of the name of an object or item just replace the unknown name with doofer and hey presto.
+>
+> – _Mc Numpty March 20, 2004_ [[link](https://www.urbandictionary.com/define.php?term=Doofer)]
 
-Nunc metus incididunt ac sapien bibendum amet sed lorem massa enim aliqua suspendisse scelerisque platea. Ornare ut leo sit elementum pharetra dictumst tortor donec nec praesent neque mauris scelerisque. Ligula lorem ultrices pellentesque aliquam a nam vitae lobortis duis eget eu sagittis vel. Odio quam semper ipsum porttitor labore eiusmod proin aenean ut tristique dolor imperdiet dolor accumsan. Semper consectetur sem augue incididunt ante augue aliqua integer convallis placerat platea.
+You may want:
 
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+- [Extension README.md](/Doofer.novaextension/README.md)
+- [Examples](/examples)
 
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+## Development
 
-My name is methos
+This is a Nova extension written in [TypeScript](https://www.typescriptlang.org)
+which is bundled with [esbuild](https://esbuild.github.io)
+and formatted with [Prettier](https://prettier.io).
 
-TXkgbmFtZSBpcyBtZXRob3M=
+There are two production dependencies:
 
-- C
-- B
-- E
-- A
-- D
+- [jwt-decode](https://github.com/auth0/jwt-decode) for expanding a JSON Web Token
+- [casex](https://github.com/pedsmoreira/casex) for converting text between cases
 
-## future work / ideas
+The extension is made up of several "editor" commands which work with
+the text you have selected in a Nova text editor.
+The commands are found in the [src/Scripts/commands](/src/Scripts/commands) folder
+and the entrypoint for the extension is [src/Scripts/main.ts](/src/Scripts/main.ts)
 
-- release extension?
+### Setup
+
+To work on the extension, you will need to have [Node.js](https://nodejs.org/en/) (version 12+)
+and [Nova](https://nova.app) installed on your development machine. Then run:
+
+```sh
+# cd to/this/folder
+
+# Install NPM dependencies
+npm install
+```
+
+Next, open this repository (the folder with `Doofer.novaextension` in it) in Nova
+and make sure Nova is in development mode,
+**Nova** → **Preferences** and check **Extension Development**.
+
+### Regular use
+
+For development, run the `Development` build task (`cmd+b`)
+and activate the workspace as an extension with **Extensions** → **Activate Project as Extension**.
+This will tell Nova to run the local code directly,
+it will also restart the extension every time you rebuild.
+So remember to rebuild to see new changes to commands.
+
+When in development mode, the extension outputs extra information to the Debug Pane,
+which can be shown with **View** → **Show Debug Pane**.
+
+Use the text in the [examples](/examples) markdown files to test different commands.
+
+### Code formatting
+
+This repository uses [Prettier](https://prettier.io/),
+[yorkie](https://www.npmjs.com/package/yorkie)
+and [lint-staged](https://www.npmjs.com/package/lint-staged) to
+automatically format code when staging code for a git commit.
+So code that is pushed to the repository is always consistently formatted.
+
+You can manually run the formatter with `npm run format` if you want.
+
+Prettier ignores files using [.prettierignore](/.prettierignore)
+or adding `// prettier-ignore` before a line.
+
+## Future work / Ideas
+
+Please see [GitHub issues](https://github.com/robb-j/nova-doofer/issues)

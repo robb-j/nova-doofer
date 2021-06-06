@@ -11,6 +11,9 @@ export function sortLinesCommand(editor: TextEditor) {
     return;
   }
 
+  debug(selectedRange.start);
+  debug(selectedRange.end);
+
   const output = selectedText.split("\n").sort().join("\n");
 
   debug(`input='${selectedText}' output=${output}`);

@@ -31,14 +31,14 @@ function getConfig(workspace: Workspace) {
   return {
     // How many words to put into sentences
     sentence: {
-      min: getOr("robb-j.text-utils.sentence-min", SENTENCE_MIN),
-      max: getOr("robb-j.text-utils.sentence-max", SENTENCE_MAX),
+      min: getOr("doofer.sentence-min", SENTENCE_MIN),
+      max: getOr("doofer.sentence-max", SENTENCE_MAX),
     },
 
     // How many sentences to put into paragraphs
     paragraph: {
-      min: getOr("robb-j.text-utils.paragraph-min", PARAGRAPH_MIN),
-      max: getOr("robb-j.text-utils.paragraph-max", PARAGRAPH_MAX),
+      min: getOr("doofer.paragraph-min", PARAGRAPH_MIN),
+      max: getOr("doofer.paragraph-max", PARAGRAPH_MAX),
     },
   };
 }
