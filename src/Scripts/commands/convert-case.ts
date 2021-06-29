@@ -2,7 +2,7 @@ import casex from "casex";
 
 import { NothingSelectedNotification } from "../notifications";
 import { createDebug } from "../debug";
-import { askChoice } from "../utils";
+import { askChoice, makeMultipleEdits } from "../utils";
 
 const debug = createDebug("convert-case");
 
@@ -21,9 +21,12 @@ export async function convertCaseCommand(
   editor: TextEditor,
   workspace: Workspace
 ) {
-  const { selectedText, selectedRange } = editor;
+  const { selectedRanges } = editor;
 
-  if (!selectedText) {
+  if (
+    selectedRanges.length === 0 ||
+    selectedRanges.some((r) => r.length === 0)
+  ) {
     nova.notifications.add(new NothingSelectedNotification());
     return;
   }
@@ -35,13 +38,18 @@ export async function convertCaseCommand(
   const targetCase = cases.find((c) => c.title === caseChoice);
 
   if (!targetCase) return;
-  const output = casex(selectedText, targetCase.pattern);
 
-  debug(
-    `input='${selectedText}' case='${targetCase?.pattern}' output='${output}'`
+  editor.selectedRanges = makeMultipleEdits(
+    editor,
+    selectedRanges.map((range) => {
+      const inputText = editor.getTextInRange(range);
+      const outputText = casex(inputText, targetCase.pattern);
+
+      debug(
+        `input='${inputText}' case='${targetCase.pattern}' output='${outputText}'`
+      );
+
+      return { range, inputText, outputText };
+    })
   );
-
-  editor.edit((edit) => {
-    edit.replace(selectedRange, output);
-  });
 }
