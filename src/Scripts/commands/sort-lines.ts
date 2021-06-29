@@ -11,14 +11,20 @@ export function sortLinesCommand(editor: TextEditor) {
     return;
   }
 
-  debug(selectedRange.start);
-  debug(selectedRange.end);
+  // Get the range for the entire lines that are selected
+  const lineRange = editor.getLineRangeForRange(selectedRange);
+  const lineText = editor.getTextInRange(lineRange);
 
-  const output = selectedText.split("\n").sort().join("\n");
+  // Sort the lines that are selected, remove empty lines and join them together again
+  const outputText = lineText
+    .split("\n")
+    .filter((line) => line.trim().length > 0)
+    .sort()
+    .join("\n");
 
-  debug(`input='${selectedText}' output=${output}`);
+  debug(`input='${lineText}' output=${outputText}`);
 
   editor.edit((edit) => {
-    edit.replace(selectedRange, output);
+    edit.replace(lineRange, outputText);
   });
 }
