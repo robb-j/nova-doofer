@@ -3,24 +3,33 @@ import {
   NothingSelectedNotification,
 } from "../notifications";
 import { createDebug } from "../debug";
+import { makeMultipleEdits } from "../utils";
 
 const debug = createDebug("base64-decode");
 
 export function base64DecodeCommand(editor: TextEditor) {
   try {
-    const { selectedText, selectedRange } = editor;
+    const { selectedRanges } = editor;
 
-    if (!selectedText) {
+    debug(selectedRanges);
+
+    if (
+      selectedRanges.length === 0 ||
+      selectedRanges.some((r) => r.length === 0)
+    ) {
       nova.notifications.add(new NothingSelectedNotification());
       return;
     }
 
-    const output = atob(selectedText);
-    debug(`input='${selectedText}' output=${output}`);
-
-    editor.edit((edit) => {
-      edit.replace(selectedRange, output);
-    });
+    editor.selectedRanges = makeMultipleEdits(
+      editor,
+      selectedRanges.map((range) => {
+        const inputText = editor.getTextInRange(range);
+        const outputText = atob(inputText);
+        debug(`input='${inputText}' output=${outputText}`);
+        return { range, inputText, outputText };
+      })
+    );
   } catch (error) {
     nova.notifications.add(new InvalidBase64Notification());
   }
