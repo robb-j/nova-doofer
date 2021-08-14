@@ -1,6 +1,6 @@
 # Doofer
 
-Extra text utilities for [Nova](https://nova.app).
+Extra text utilities for [Nova](https://nova.app). This is not currently a published Nova Extension.
 
 > A Doofer can be anything. When you can't think of the name of an object or item just replace the unknown name with doofer and hey presto.
 >

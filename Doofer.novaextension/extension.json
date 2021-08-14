@@ -18,17 +18,17 @@
   "commands": {
     "editor": [
       {
-        "title": "Base64 Decode",
+        "title": "Decode Base64",
         "command": "doofer.base64Decode",
         "when": "editorHasSelection"
       },
       {
-        "title": "Base64 Encode",
+        "title": "Encode as Base64",
         "command": "doofer.base64Encode",
         "when": "editorHasSelection"
       },
       {
-        "title": "JWT Decode",
+        "title": "Decode JWT",
         "command": "doofer.jwtDecode",
         "when": "editorHasSelection"
       },
