@@ -1,10 +1,15 @@
 {
-  "actions" : {
-    "build" : {
-      "enabled" : true,
-      "script" : ".\/bin\/build.sh"
+  "actions": {
+    "build": {
+      "enabled": true,
+      "script": "./bin/build.sh"
+    },
+    "run": {
+      "enabled": true,
+      "script": "#!/bin/sh\nnova extension activate ."
     }
   },
-  "identifier" : "D20B2325-9BB5-4838-A472-D4894A017E9E",
-  "openLogOnRun" : "fail"
+  "buildBeforeRunning": true,
+  "identifier": "D20B2325-9BB5-4838-A472-D4894A017E9E",
+  "openLogOnRun": "fail"
 }
