@@ -1,4 +1,9 @@
-import * as cmd from "./commands/all";
+import { base64DecodeCommand } from "./commands/base64-decode";
+import { base64EncodeCommand } from "./commands/base64-encode";
+import { convertCaseCommand } from "./commands/convert-case";
+import { jwtDecodeCommand } from "./commands/jwt-decode";
+import { loremIpsumCommand } from "./commands/lorem-ipsum";
+import { sortLinesCommand } from "./commands/sort-lines";
 
 export function activate() {
   // ...
@@ -9,25 +14,25 @@ export function deactivate() {
 }
 
 nova.commands.register("doofer.base64Decode", (editor: TextEditor) => {
-  cmd.base64DecodeCommand(editor);
+  base64DecodeCommand(editor);
 });
 
 nova.commands.register("doofer.base64Encode", (editor: TextEditor) =>
-  cmd.base64EncodeCommand(editor)
+  base64EncodeCommand(editor)
 );
 
 nova.commands.register("doofer.jwtDecode", (editor: TextEditor) =>
-  cmd.jwtDecodeCommand(editor)
+  jwtDecodeCommand(editor)
 );
 
 nova.commands.register("doofer.loremIpsum", (editor: TextEditor) =>
-  cmd.loremIpsumCommand(editor, nova.workspace)
+  loremIpsumCommand(editor, nova.workspace)
 );
 
 nova.commands.register("doofer.sortLines", (editor: TextEditor) =>
-  cmd.sortLinesCommand(editor)
+  sortLinesCommand(editor)
 );
 
 nova.commands.register("doofer.convertCase", (editor: TextEditor) =>
-  cmd.convertCaseCommand(editor, nova.workspace)
+  convertCaseCommand(editor, nova.workspace)
 );

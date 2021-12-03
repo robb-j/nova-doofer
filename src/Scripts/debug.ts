@@ -2,11 +2,11 @@
 const console = (globalThis as any).console as Console;
 
 export function createDebug(namespace: string) {
-  return (...args: any[]) => {
+  return (message: unknown, ...args: unknown[]) => {
     if (nova.inDevMode() === false) return;
     const humanArgs = args.map((arg) =>
       typeof arg === "object" ? JSON.stringify(arg) : arg
     );
-    console.log(`[${namespace}]`, ...humanArgs);
+    console.log(`${namespace} ${message}`, ...humanArgs);
   };
 }
