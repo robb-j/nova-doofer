@@ -16,15 +16,23 @@ export function sortLinesCommand(editor: TextEditor) {
   const lineText = editor.getTextInRange(lineRange);
 
   // Sort the lines that are selected, remove empty lines and join them together again
-  const outputText = lineText
-    .split("\n")
-    .filter((line) => line.trim().length > 0)
-    .sort()
-    .join("\n");
+  // Add a newline for the end newline that gets stripped out
+  const outputText =
+    lineText
+      .split(editor.document.eol)
+      .filter((line) => line.trim().length > 0)
+      .sort()
+      .join(editor.document.eol) + editor.document.eol;
 
-  debug(`input='${lineText}' output=${outputText}`);
+  debug(
+    `input='${escapeMultiline(lineText)}' output=${escapeMultiline(outputText)}`
+  );
 
   editor.edit((edit) => {
     edit.replace(lineRange, outputText);
   });
+}
+
+function escapeMultiline(input: string) {
+  return input.replace(/\n/g, "\\n");
 }
