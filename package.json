@@ -23,7 +23,6 @@
     ]
   },
   "dependencies": {
-    "casex": "^3.0.0",
-    "jwt-decode": "^3.1.2"
+    "casex": "^3.0.0"
   }
 }

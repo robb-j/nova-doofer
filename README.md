@@ -17,9 +17,8 @@ This is a Nova extension written in [TypeScript](https://www.typescriptlang.org)
 which is bundled with [esbuild](https://esbuild.github.io)
 and formatted with [Prettier](https://prettier.io).
 
-There are two production dependencies:
+These are the production dependencies:
 
-- [jwt-decode](https://github.com/auth0/jwt-decode) for expanding a JSON Web Token
 - [casex](https://github.com/pedsmoreira/casex) for converting text between cases
 
 The extension is made up of several "editor" commands which work with
