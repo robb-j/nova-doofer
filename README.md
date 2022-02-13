@@ -29,7 +29,7 @@ and the entrypoint for the extension is [src/Scripts/main.ts](/src/Scripts/main.
 
 ### Setup
 
-To work on the extension, you will need to have [Node.js](https://nodejs.org/en/) (version 12+)
+To work on the extension, you will need to have [Node.js](https://nodejs.org/en/) (version 16+)
 and [Nova](https://nova.app) installed on your development machine. Then run:
 
 ```sh
@@ -45,11 +45,13 @@ and make sure Nova is in development mode,
 
 ### Regular use
 
-For development, run the `Development` build task (`cmd+b`)
-and activate the workspace as an extension with **Extensions** → **Activate Project as Extension**.
-This will tell Nova to run the local code directly,
-it will also restart the extension every time you rebuild.
-So remember to rebuild to see new changes to commands.
+For development, use the `Development` task to build and run the extension locally.
+**Build** will compile the TypeScript into JavaScript into the extension folder.
+**Run** will do the build and activate the extension in Nova.
+Nova will run the extension locally and restart when and file inside the `.novaextension` changes,
+e.g. by re-running the **Build** task.
+
+> Make sure to disable the extension if a published version is already installed.
 
 When in development mode, the extension outputs extra information to the Debug Pane,
 which can be shown with **View** → **Show Debug Pane**.
