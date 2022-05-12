@@ -1,0 +1,124 @@
+{
+  "clips": [
+    {
+      "name": "Kubernetes Resources",
+      "children": [
+        {
+          "content": "apiVersion: kustomize.config.k8s.io/v1beta1\nkind: Kustomization\n\nnamespace: ${:Namespace}\n\nresources:\n  - ${:Resource}\n",
+          "name": "Kustomization",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "kust"
+        },
+        {
+          "content": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: ${1:Name}\nspec:\n  selector:\n    matchLabels:\n      ${2:Labels}\n  template:\n    metadata:\n      labels:\n        ${2:Labels}\n    spec:\n      containers:\n        - name: ${1:Name}\n          image: ${3:Image}\n",
+          "name": "Deployment",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "deploy"
+        },
+        {
+          "content": "apiVersion: v1\nkind: Service\nmetadata:\n  name: ${1:Name}\nspec:\n  selector:\n    ${2:Labels}\n  ports:\n    - port: ${3:Port}\n",
+          "name": "Service",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "service"
+        },
+        {
+          "content": "apiVersion: networking.k8s.io/v1\nkind: Ingress\nmetadata:\n  name: ${1:Name}\nspec:\n  ingressClassName: ${2:IngressClass}\n  rules:\n    - host: ${3:Hostname}\n      http:\n        paths:\n          - path: ${4:/path}\n            pathType: Prefix\n            backend:\n              service:\n                name: ${5:ServiceName}\n                port:\n                  ${6:ServicePort}\n  tls:\n    - hosts:\n        - ${3:Hostname}\n      secretName: ${3:Hostname}\n",
+          "name": "Ingress",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "ingress"
+        },
+        {
+          "content": "apiVersion: v1\nkind: PersistentVolumeClaim\nmetadata:\n  name: ${1:Name}\nspec:\n  storageClassName: ${2:Storage Class Name}\n  accessModes:\n    - ReadWriteOnce\n  resources:\n    requests:\n      storage: ${3:Size}",
+          "name": "PersistentVolumeClaim",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "pvc"
+        },
+        {
+          "content": "apiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: ${1:Name}\ndata:\n  ${2:Data}",
+          "name": "ConfigMap",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "configmap"
+        }
+      ]
+    },
+    {
+      "name": "Kubernetes Labels",
+      "children": [
+        {
+          "content": "app.kubernetes.io/name: ${:Name}\napp.kubernetes.io/instance: ${:Instance}\napp.kubernetes.io/version: ${:Version}\napp.kubernetes.io/component: ${:Component}\napp.kubernetes.io/part-of: ${:Part of}\napp.kubernetes.io/managed-by: ${:Managed by}\napp.kubernetes.io/created-by: ${:Created by}",
+          "name": "Kubernetes Labels",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "labels"
+        },
+        {
+          "content": "app.kubernetes.io/name: ${:Value}",
+          "name": "Kubernetes Name",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "name"
+        },
+        {
+          "content": "app.kubernetes.io/instance: ${:Value}",
+          "name": "Kubernetes Instance",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "instance"
+        },
+        {
+          "content": "app.kubernetes.io/version: ${:Value}",
+          "name": "Kubernetes Version",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "version"
+        },
+        {
+          "content": "app.kubernetes.io/component: ${:Value}",
+          "name": "Kubernetes Component",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "component"
+        },
+        {
+          "content": "app.kubernetes.io/part-of: ${:Value}",
+          "name": "Kubernetes Part Of",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "part-of"
+        },
+        {
+          "content": "app.kubernetes.io/managed-by: ${:Value}",
+          "name": "Kubernetes Managed By",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "managed-by"
+        },
+        {
+          "content": "app.kubernetes.io/created-by: ${:Value}",
+          "name": "Kubernetes Created By",
+          "scope": "editor",
+          "syntax": "yaml",
+          "trigger": "part-of"
+        }
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "children": [
+        {
+          "content": "console.log(${:message})",
+          "name": "console.log",
+          "scope": "editor",
+          "syntax": "javascript",
+          "trigger": "log"
+        }
+      ]
+    }
+  ]
+}

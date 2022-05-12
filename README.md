@@ -47,7 +47,7 @@ and make sure Nova is in development mode,
 For development, use the `Development` task to build and run the extension locally.
 **Build** will compile the TypeScript into JavaScript into the extension folder.
 **Run** will do the build and activate the extension in Nova.
-Nova will run the extension locally and restart when and file inside the `.novaextension` changes,
+Nova will run the extension locally and restart when any file inside the `.novaextension` changes,
 e.g. by re-running the **Build** task.
 
 > Make sure to disable the extension if a published version is already installed.
