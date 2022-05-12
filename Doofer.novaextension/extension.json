@@ -3,7 +3,7 @@
   "name": "Doofer",
   "organization": "Rob Anderson",
   "description": "Extra Text Utilities for Nova",
-  "version": "1.0",
+  "version": "1.1",
   "categories": ["commands", "clips"],
   "license": "MIT",
   "repository": "https://github.com/robb-j/nova-doofer",
