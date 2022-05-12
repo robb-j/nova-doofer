@@ -117,6 +117,25 @@
           "scope": "editor",
           "syntax": "javascript",
           "trigger": "log"
+        },
+        {
+          "content": "/**\n * ${:Comment}\n */",
+          "name": "Doc Comment",
+          "scope": "editor",
+          "syntax": "typescript",
+          "trigger": "/**"
+        }
+      ]
+    },
+    {
+      "name": "Markdown",
+      "children": [
+        {
+          "content": "<details>\n<summary>${:Title}</summary>\n\n${:Content}\n\n</details>",
+          "name": "dts",
+          "scope": "editor",
+          "syntax": "markdown",
+          "trigger": "dts"
         }
       ]
     }
