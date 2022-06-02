@@ -1,15 +1,10 @@
 {
-  "actions": {
-    "build": {
-      "enabled": true,
-      "path": "bin/build.sh"
-    },
-    "run": {
-      "enabled": true,
-      "path": "bin/run.sh"
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "path" : "bin\/build.sh"
     }
   },
-  "buildBeforeRunning": true,
-  "identifier": "D20B2325-9BB5-4838-A472-D4894A017E9E",
-  "openLogOnRun": "fail"
+  "buildBeforeRunning" : true,
+  "openLogOnRun" : "fail"
 }
