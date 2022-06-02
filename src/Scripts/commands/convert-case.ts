@@ -1,8 +1,7 @@
 import casex from "casex";
 
 import { NothingSelectedNotification } from "../notifications";
-import { createDebug } from "../debug";
-import { askChoice } from "../utils";
+import { askChoice, createDebug } from "../utils";
 
 const debug = createDebug("convert-case");
 

@@ -42,6 +42,11 @@
         "when": "editorHasSelection"
       },
       {
+        "title": "Reverse Lines",
+        "command": "doofer.reverseLines",
+        "when": "editorHasSelection"
+      },
+      {
         "title": "Convert Case...",
         "command": "doofer.convertCase",
         "when": "editorHasSelection"

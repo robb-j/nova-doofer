@@ -2,7 +2,7 @@ import {
   InvalidBase64Notification,
   NothingSelectedNotification,
 } from "../notifications";
-import { createDebug } from "../debug";
+import { createDebug } from "../utils";
 
 const debug = createDebug("base64-decode");
 

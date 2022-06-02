@@ -1,5 +1,4 @@
-import { createDebug } from "../debug";
-import { askChoice } from "../utils";
+import { askChoice, createDebug } from "../utils";
 
 const debug = createDebug("lorem-ipsum");
 

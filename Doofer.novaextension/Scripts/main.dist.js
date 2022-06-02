@@ -8,10 +8,6 @@ var __markAsModule = (target) => __defProp(target, "__esModule", { value: true }
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
-var __export = (target, all) => {
-  for (var name in all)
-    __defProp(target, name, { get: all[name], enumerable: true });
-};
 var __reExport = (target, module2, copyDefault, desc) => {
   if (module2 && typeof module2 === "object" || typeof module2 === "function") {
     for (let key of __getOwnPropNames(module2))
@@ -23,11 +19,6 @@ var __reExport = (target, module2, copyDefault, desc) => {
 var __toESM = (module2, isNodeMode) => {
   return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", !isNodeMode && module2 && module2.__esModule ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
 };
-var __toCommonJS = /* @__PURE__ */ ((cache) => {
-  return (module2, temp) => {
-    return cache && cache.get(module2) || (temp = __reExport(__markAsModule({}), module2, 1), cache && cache.set(module2, temp), temp);
-  };
-})(typeof WeakMap !== "undefined" ? /* @__PURE__ */ new WeakMap() : 0);
 var __async = (__this, __arguments, generator) => {
   return new Promise((resolve, reject) => {
     var fulfilled = (value) => {
@@ -88,13 +79,6 @@ var require_casex = __commonJS({
   }
 });
 
-// src/Scripts/main.ts
-var main_exports = {};
-__export(main_exports, {
-  activate: () => activate,
-  deactivate: () => deactivate
-});
-
 // src/Scripts/notifications/invalid-base64.ts
 var InvalidBase64Notification = class extends NotificationRequest {
   constructor() {
@@ -122,7 +106,7 @@ var NothingSelectedNotification = class extends NotificationRequest {
   }
 };
 
-// src/Scripts/debug.ts
+// src/Scripts/utils.ts
 var console = globalThis.console;
 function createDebug(namespace) {
   return (message, ...args) => {
@@ -131,6 +115,14 @@ function createDebug(namespace) {
     const humanArgs = args.map((arg) => typeof arg === "object" ? JSON.stringify(arg) : arg);
     console.log(`${namespace} ${message}`, ...humanArgs);
   };
+}
+function askChoice(workspace, choices) {
+  return new Promise((resolve) => {
+    workspace.showChoicePalette(choices, {}, (choice) => resolve(choice));
+  });
+}
+function escapeMultiline(input) {
+  return input.replace(/\n/g, "\\n");
 }
 
 // src/Scripts/commands/base64-decode.ts
@@ -175,15 +167,6 @@ function base64EncodeCommand(editor) {
 
 // src/Scripts/commands/convert-case.ts
 var import_casex = __toESM(require_casex());
-
-// src/Scripts/utils.ts
-function askChoice(workspace, choices) {
-  return new Promise((resolve) => {
-    workspace.showChoicePalette(choices, {}, (choice) => resolve(choice));
-  });
-}
-
-// src/Scripts/commands/convert-case.ts
 var debug3 = createDebug("convert-case");
 var cases = [
   { pattern: "ca_se", title: "snake_case" },
@@ -326,31 +309,39 @@ function loremIpsumCommand(editor, workspace) {
   });
 }
 
-// src/Scripts/commands/sort-lines.ts
-var debug6 = createDebug("sort-lines");
-function sortLinesCommand(editor) {
-  const { selectedText, selectedRange } = editor;
-  if (!selectedText) {
+// src/Scripts/commands/reverse-lines.ts
+var debug6 = createDebug("reverse-lines");
+function reverseLinesCommand(editor) {
+  if (!editor.selectedText) {
     nova.notifications.add(new NothingSelectedNotification());
     return;
   }
-  const lineRange = editor.getLineRangeForRange(selectedRange);
+  const lineRange = editor.getLineRangeForRange(editor.selectedRange);
   const lineText = editor.getTextInRange(lineRange);
-  const outputText = lineText.split(editor.document.eol).filter((line) => line.trim().length > 0).sort().join(editor.document.eol) + editor.document.eol;
+  const outputText = editor.getTextInRange(lineRange).split(editor.document.eol).filter((l) => l.trim().length > 0).reverse().join(editor.document.eol);
   debug6(`input='${escapeMultiline(lineText)}' output=${escapeMultiline(outputText)}`);
   editor.edit((edit) => {
-    edit.replace(lineRange, outputText);
+    edit.replace(lineRange, outputText + editor.document.eol);
   });
 }
-function escapeMultiline(input) {
-  return input.replace(/\n/g, "\\n");
+
+// src/Scripts/commands/sort-lines.ts
+var debug7 = createDebug("sort-lines");
+function sortLinesCommand(editor) {
+  if (!editor.selectedText) {
+    nova.notifications.add(new NothingSelectedNotification());
+    return;
+  }
+  const lineRange = editor.getLineRangeForRange(editor.selectedRange);
+  const lineText = editor.getTextInRange(lineRange);
+  const outputText = lineText.split(editor.document.eol).filter((line) => line.trim().length > 0).sort().join(editor.document.eol);
+  debug7(`input='${escapeMultiline(lineText)}' output=${escapeMultiline(outputText)}`);
+  editor.edit((edit) => {
+    edit.replace(lineRange, outputText + editor.document.eol);
+  });
 }
 
 // src/Scripts/main.ts
-function activate() {
-}
-function deactivate() {
-}
 nova.commands.register("doofer.base64Decode", (editor) => {
   base64DecodeCommand(editor);
 });
@@ -358,5 +349,5 @@ nova.commands.register("doofer.base64Encode", (editor) => base64EncodeCommand(ed
 nova.commands.register("doofer.jwtDecode", (editor) => jwtDecodeCommand(editor));
 nova.commands.register("doofer.loremIpsum", (editor) => loremIpsumCommand(editor, nova.workspace));
 nova.commands.register("doofer.sortLines", (editor) => sortLinesCommand(editor));
+nova.commands.register("doofer.reverseLines", (editor) => reverseLinesCommand(editor));
 nova.commands.register("doofer.convertCase", (editor) => convertCaseCommand(editor, nova.workspace));
-module.exports = __toCommonJS(main_exports);

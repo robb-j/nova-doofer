@@ -1,9 +1,9 @@
-import { NothingSelectedNotification } from "../notifications";
 import { createDebug, escapeMultiline } from "../utils";
+import { NothingSelectedNotification } from "../notifications";
 
-const debug = createDebug("sort-lines");
+const debug = createDebug("reverse-lines");
 
-export function sortLinesCommand(editor: TextEditor) {
+export function reverseLinesCommand(editor: TextEditor) {
   if (!editor.selectedText) {
     nova.notifications.add(new NothingSelectedNotification());
     return;
@@ -13,12 +13,13 @@ export function sortLinesCommand(editor: TextEditor) {
   const lineRange = editor.getLineRangeForRange(editor.selectedRange);
   const lineText = editor.getTextInRange(lineRange);
 
-  // Sort the lines that are selected, remove empty lines and join them together again
-  // Add a newline for the end newline that gets stripped out
-  const outputText = lineText
+  // Reverse the lines that are selected, remove empty lines
+  // Add a newline again for the one that got stripped out
+  const outputText = editor
+    .getTextInRange(lineRange)
     .split(editor.document.eol)
-    .filter((line) => line.trim().length > 0)
-    .sort()
+    .filter((l) => l.trim().length > 0)
+    .reverse()
     .join(editor.document.eol);
 
   debug(

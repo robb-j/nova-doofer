@@ -4,7 +4,7 @@ import {
   InvalidJwtNotification,
   NothingSelectedNotification,
 } from "../notifications";
-import { createDebug } from "../debug";
+import { createDebug } from "../utils";
 
 const debug = createDebug("jwt-decode");
 
