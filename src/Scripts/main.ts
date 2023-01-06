@@ -1,10 +1,12 @@
 import { base64DecodeCommand } from "./commands/base64-decode";
 import { base64EncodeCommand } from "./commands/base64-encode";
 import { convertCaseCommand } from "./commands/convert-case";
+import { jsonToYamlCommand } from "./commands/json-to-yaml";
 import { jwtDecodeCommand } from "./commands/jwt-decode";
 import { loremIpsumCommand } from "./commands/lorem-ipsum";
 import { reverseLinesCommand } from "./commands/reverse-lines";
 import { sortLinesCommand } from "./commands/sort-lines";
+import { yamlToJsonCommand } from "./commands/yaml-to-json";
 
 // export function activate() {}
 // export function deactivate() {}
@@ -35,4 +37,12 @@ nova.commands.register("doofer.reverseLines", (editor: TextEditor) =>
 
 nova.commands.register("doofer.convertCase", (editor: TextEditor) =>
   convertCaseCommand(editor, nova.workspace)
+);
+
+nova.commands.register("doofer.jsonToYaml", (editor: TextEditor) =>
+  jsonToYamlCommand(editor)
+);
+
+nova.commands.register("doofer.yamlToJson", (editor: TextEditor) =>
+  yamlToJsonCommand(editor)
 );

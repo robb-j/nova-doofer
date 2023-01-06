@@ -50,6 +50,16 @@
         "title": "Convert Case...",
         "command": "doofer.convertCase",
         "when": "editorHasSelection"
+      },
+      {
+        "title": "JSON to YAML",
+        "command": "doofer.jsonToYaml",
+        "when": "editorHasSelection"
+      },
+      {
+        "title": "YAML to JSON",
+        "command": "doofer.yamlToJson",
+        "when": "editorHasSelection"
       }
     ]
   },

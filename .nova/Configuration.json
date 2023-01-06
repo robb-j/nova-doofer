@@ -1,4 +1,7 @@
 {
-  "workspace.color": 0,
-  "workspace.name": "doofer"
+  "index.ignored_file_patterns" : [
+    "*.dist.js"
+  ],
+  "workspace.color" : 0,
+  "workspace.name" : "doofer"
 }

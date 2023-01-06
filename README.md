@@ -20,6 +20,7 @@ and formatted with [Prettier](https://prettier.io).
 These are the production dependencies:
 
 - [casex](https://github.com/pedsmoreira/casex) for converting text between cases
+- [yaml](https://github.com/eemeli/yaml) for converting between json and yaml
 
 The extension is made up of several "editor" commands which work with
 the text you have selected in a Nova text editor.
