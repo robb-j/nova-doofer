@@ -6,14 +6,15 @@
     "format": "prettier --write '**/*.{js,ts,tsx,json,css,md}'"
   },
   "devDependencies": {
-    "@types/nova-editor-node": "^4.1.4",
+    "@types/nova-editor-node": "^5.1.0",
     "@types/whatwg-fetch": "^0.0.33",
-    "esbuild": "^0.14.21",
-    "lint-staged": "^12.3.3",
-    "prettier": "^2.5.1",
-    "typescript": "^4.5.5",
+    "esbuild": "^0.17.19",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.4",
     "yorkie": "^2.0.0"
   },
+  "prettier": {},
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -23,7 +24,7 @@
     ]
   },
   "dependencies": {
-    "casex": "^3.0.0",
-    "yaml": "^2.2.1"
+    "casex": "^3.0.2",
+    "yaml": "^2.3.1"
   }
 }
