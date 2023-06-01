@@ -60,6 +60,11 @@
         "title": "YAML to JSON",
         "command": "doofer.yamlToJson",
         "when": "editorHasSelection"
+      },
+      {
+        "title": "Decode Kube Secret",
+        "command": "doofer.decodeKubeSecret",
+        "when": "editorHasFocus"
       }
     ]
   },

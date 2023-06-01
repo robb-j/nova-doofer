@@ -1,6 +1,7 @@
 import { base64DecodeCommand } from "./commands/base64-decode";
 import { base64EncodeCommand } from "./commands/base64-encode";
 import { convertCaseCommand } from "./commands/convert-case";
+import { decodeKubeSecret } from "./commands/decode-kube-secret";
 import { jsonToYamlCommand } from "./commands/json-to-yaml";
 import { jwtDecodeCommand } from "./commands/jwt-decode";
 import { loremIpsumCommand } from "./commands/lorem-ipsum";
@@ -45,4 +46,8 @@ nova.commands.register("doofer.jsonToYaml", (editor: TextEditor) =>
 
 nova.commands.register("doofer.yamlToJson", (editor: TextEditor) =>
   yamlToJsonCommand(editor)
+);
+
+nova.commands.register("doofer.decodeKubeSecret", (editor: TextEditor) =>
+  decodeKubeSecret(editor)
 );
