@@ -2,6 +2,9 @@
 
 set -e
 
+# Install npm dependencies
+npm install --no-audit --no-fund
+
 # Lint TypeScript
 npx tsc --noEmit --pretty
 
