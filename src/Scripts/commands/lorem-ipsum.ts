@@ -116,9 +116,9 @@ export async function loremIpsumCommand(
     output = randomSentence(length);
   }
 
-  const { selectedRange } = workspace.activeTextEditor;
+  // const { selectedRange } = workspace.activeTextEditor;
 
-  workspace.activeTextEditor.edit((edit) => {
-    edit.replace(selectedRange, output);
+  editor.edit((edit) => {
+    edit.replace(editor.selectedRange, output);
   });
 }
